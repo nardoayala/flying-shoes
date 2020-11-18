@@ -1,0 +1,44 @@
+.header {
+  height: 80px;
+  background-color: #e3e3e3;
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &__brand {
+    display: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+  &__navbar{
+    width: 100%;
+    &__links{
+      display: flex;
+      justify-content: space-around;
+      gap: 15px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+  }
+  a {
+    color: black;
+    text-decoration: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .header__brand {
+    display: block;
+  }
+
+  .header__navbar {
+    width: initial;
+  }
+}

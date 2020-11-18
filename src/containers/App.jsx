@@ -1,8 +1,13 @@
 import React from 'react';
+import Header from '../components/Header';
+import Hero from '../components/Hero';
+import ProductDetails from '../components/ProductDetails';
 
 const App = () => (
   <div className='app'>
-    <h1>Hey there!</h1>
+    <Header />
+    <Hero />
+    <ProductDetails />
   </div>
 );
 
