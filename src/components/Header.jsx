@@ -1,32 +1,33 @@
 import React from 'react';
-import '../styles/components/Header.scss';
+import { Link } from 'react-router-dom';
+import './styles/Header.scss';
 import favicon from '../images/favicon.png';
 
 const Header = () => (
-  <header className='header'>
-    <div className='header__container container'>
-      <div className='header__brand'>
-        <a href='/'>
-          <img src={favicon} alt='Brand Logo' />
+  <header className="header">
+    <div className="header__container container">
+      <div className="header__brand">
+        <Link to="/">
+          <img src={favicon} alt="Brand Logo" />
           <span>Flyshoe</span>
-        </a>
+        </Link>
       </div>
-      <nav className='header__navbar'>
-        <ul className='header__navbar__links'>
+      <nav className="header__navbar">
+        <ul className="header__navbar__links">
           <li>
-            <a href='/'>
+            <Link to="/about">
               About
-            </a>
+            </Link>
           </li>
           <li>
-            <a href='/'>
+            <Link to="/features">
               Features
-            </a>
+            </Link>
           </li>
           <li>
-            <a href='/'>
+            <Link to="/contact">
               Contact
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>

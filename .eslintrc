@@ -1,7 +1,3 @@
 {
-  "extends": "eslint-config-platzi",
-  "rules": {
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": ["config/*.js"]}]
-  },
-  "plugins": ["eslint-plugin-import"]
+  "extends": "airbnb"
 }

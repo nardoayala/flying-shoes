@@ -7,8 +7,19 @@
   &__box {
     display: flex;
     flex-direction: column;
+    figure {
+      overflow: hidden;
+      border-radius: 8px;
+      box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+      cursor: pointer;
+      &:hover img {
+        transform: scale(1.1);
+      }
+    }
     &__thumbnail {
+      display: block;
       max-width: 350px;
+      transition: all 0.8s ease-in-out;
     }
     &__title {
       margin-top: 20px;
