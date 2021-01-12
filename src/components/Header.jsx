@@ -1,42 +1,64 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ModalMenu from './ModalMenu';
+import classnames from 'classnames';
+
 import './styles/Header.scss';
-import hideMenuOnScroll from '../utils/hideMenuOnScroll';
-import toggleModal from '../utils/toggleModal';
+
+import ModalMenu from './ModalMenu';
 
 class Header extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      modalMenuVisible: false,
+      prevScrollpos: window.pageYOffset,
+      isVisible: true,
+      isModalVisible: false,
     };
   }
 
   componentDidMount() {
-    hideMenuOnScroll();
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
   }
 
   handleScroll = () => {
-    const { modalMenuVisible } = this.state;
-    if (!modalMenuVisible) {
-      hideMenuOnScroll();
-    }
-    console.log('hey There');
+    const { prevScrollpos } = this.state;
+
+    const currentScrollPos = window.pageYOffset;
+    const isVisible = prevScrollpos > currentScrollPos;
+
+    this.setState({
+      prevScrollpos: currentScrollPos,
+      isVisible,
+    });
   };
 
   handleClick = () => {
+    const { isModalVisible } = this.state;
+    const modalMenu = document.querySelector('.modal-menu');
+    if (!isModalVisible) {
+      modalMenu.style.transform = 'translateX(0)';
+    } else {
+      modalMenu.style.transform = 'translateX(-769px)';
+    }
     this.setState((prevState) => ({
-      modalMenuVisible: !prevState.modalMenuVisible,
+      isModalVisible: !prevState.isModalVisible,
     }));
-    const { modalMenuVisible } = this.state;
-    toggleModal(modalMenuVisible);
   };
 
   render() {
+    const { prevScrollpos, isVisible, isModalVisible } = this.state;
     return (
-      <header className="header">
+      <header
+        className={classnames('header', {
+          'header--hidden': !isVisible && !isModalVisible,
+          'header--dark-traslucid': prevScrollpos !== 0 && !isModalVisible,
+        })}
+      >
         <div className="header__container container">
           <span
             className="header__burger-button"
