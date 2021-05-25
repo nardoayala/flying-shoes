@@ -2,9 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames';
 
-import './styles/Header.scss';
-
-import ModalMenu from './ModalMenu';
+import '../styles/components/Header.scss';
+import ModalMenu from './MobileMenu';
 
 class Header extends React.Component {
   constructor(props) {
@@ -76,19 +75,13 @@ class Header extends React.Component {
           <nav className="header__navbar">
             <ul className="header__navbar__links">
               <li>
-                <Link to="/about">
-                  About
-                </Link>
+                <Link to="/about">About</Link>
               </li>
               <li>
-                <Link to="/features">
-                  Features
-                </Link>
+                <Link to="/features">Features</Link>
               </li>
               <li>
-                <Link to="/contact">
-                  Contact
-                </Link>
+                <Link to="/contact">Contact</Link>
               </li>
             </ul>
           </nav>
